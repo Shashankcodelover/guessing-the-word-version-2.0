@@ -1,0 +1,50 @@
+from random import *
+def guessing_the_word(random_word,user_word):
+    for letter in user_word:
+        print("",letter,end=" ")
+    print()
+        
+    for letter in range(len(user_word)): 
+        if user_word[letter]==random_word[letter]:
+            print("🟩",end=" ")
+        elif user_word[letter] in random_word:
+            print("🟧",end="  ")
+        else :
+            print("⬛",end=" ")   
+    if user_word==random_word:
+        return 1
+    else :
+        return 0
+       
+word=["hallo","Apple", "Bread", "Chair", "Dance", "Earth", "Flour", "Grace", "House", "Island", "Jewel", 
+"Knack", "Lemon", "Money", "Night", "Ocean", "Piano", "Quilt", "Rocky", "Shine", "Table", 
+"Unite", "Vivid", "Wager", "Blaze", "Clash", "Douse", "Flute", "Grape", "Hound", "Irony", 
+"Jolly", "Kneel", "Lapse", "Mirth", "Noble", "Plume", "Quest", "Shaky", "Slime", "Steak", 
+"Tramp", "Viper", "Whale", "Xenon", "Youth", "Zesty", "Chime", "Globe", "Frill", "Snare"
+]
+random_word=choice(word)
+
+massage={
+    3:"woderful",
+    2:"exelent",
+    1:"great",
+    0:"ok"
+}
+print(" lets play game ")
+i=6
+while i>0:
+    user_word=input("\n guess the word (haveing only 5 letter)  \n")
+    print(" you have ",i-1," chances only ")
+    if user_word.isalpha() and len(user_word)==5:
+        i-=1
+        
+        if guessing_the_word(random_word,user_word):
+            print("\n ",massage[i])
+            break
+        else:
+            continue
+    else:
+        print(" please enter valid word ")
+        
+print("\n end of game the correct word is ",random_word)
+
