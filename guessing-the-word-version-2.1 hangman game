@@ -7,7 +7,7 @@ some_words=["mango","apple", "banana", "mango", "strawberry", "orange", "grape",
 ]
 
 word=choice(some_words)
-print(word)
+
 print()
 chance=len(word)+2
 print(" hallo lets play hangman game \n guess the word [Hint: the name of the word is fruit ")
