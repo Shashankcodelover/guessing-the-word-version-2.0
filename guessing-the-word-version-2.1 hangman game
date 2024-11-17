@@ -1,0 +1,97 @@
+
+from collections import Counter
+from random import *
+
+some_words=["mango","apple", "banana", "mango", "strawberry", "orange", "grape", "pineapple", "apricot", "lemon", "coconut", "watermelon", "cherry", "papaya", "berry", "peach", "lychee", "muskmelon",
+"kiwi", "pear", "plum", "fig", "date", "pomegranate", "avocado", "blueberry", "blackberry", "raspberry", "jackfruit", "starfruit", "dragonfruit", "tangerine", "grapefruit"
+]
+
+word=choice(some_words)
+print(word)
+print()
+chance=len(word)+2
+print(" hallo lets play hangman game \n guess the word [Hint: the name of the word is fruit ")
+print("you have only ",chance," chances ")
+for i in word:
+    print("_",end=" ")
+print()
+playing=True
+letterGuessed=''
+correct=0
+flag=0
+
+try:
+    while (chance>0) and flag==0:
+        print()
+
+        try:
+
+            guess=str(input("guess the letter  \n " ))
+
+
+        except:
+            print('Enter only a letter!')
+            continue
+
+        if not guess.isalpha():
+            print(" \n please enter 'letter' only ")
+            continue
+        elif len(guess)>1:
+            print(" \n please enter 'single' letter only ")
+            continue
+        elif guess in letterGuessed:
+            print(" \n letter already guessed")
+            continue
+
+        if guess in word :
+            k=word.count(guess)
+            for _ in range(k):
+                letterGuessed+=guess
+        else:
+            # Decrease chances only for incorrect guesses
+            chance -= 1
+            print(f"Sorry, '{guess}' is not in the word.")
+
+
+        '''display_word = ""
+        for char in word:  # Line 42
+            if char in letterGuessed:
+                display_word += char + " "
+            else:
+                display_word += "_ "
+        print(display_word.strip())'''
+
+        for char in word:
+            if char in letterGuessed and (Counter(letterGuessed))!=(Counter(word)):
+                correct+=1
+
+                print(char,end=" ")
+
+
+
+            elif Counter[letterGuessed]==Counter(word):
+                flag=1
+                print("\n the word is ",end=" ")
+                print(word)
+                print(" congrats! you guessed the word correctly")
+                break
+
+
+            else:
+
+                print("_",end=" ")
+
+        if chance<=0 and Counter(letterGuessed)!=Counter(word):
+            print()
+            print("\n you loss the word is ",end=" ")
+            print(word)
+            break
+
+
+
+except KeyboardInterrupt:
+    print()
+
+    print("bye")
+
+
